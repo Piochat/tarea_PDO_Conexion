@@ -1,0 +1,10 @@
+.log-in-form {
+  border: 1px solid #cacaca;
+  padding: 1rem;
+  border-radius: 0;
+  background-color: #fff;
+}
+
+.login1 {
+  background-image: url(../img/baks/log.jpg);
+}

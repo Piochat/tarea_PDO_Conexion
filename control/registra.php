@@ -13,7 +13,7 @@ $MOTIVO = $_POST ['MOTIVO'];
 $archivo = $_FILES;
 var_dump($archivo);
 
-echo "<h2>" . $archivo['userfile']['name'] . "</h2>";
+// echo "<h2>" . $archivo['userfile']['name'] . "</h2>";
 if (!empty($archivo)) {
     try {
         $ruta = "C:/tmpk/";
@@ -29,8 +29,12 @@ if (!empty($archivo)) {
         $sql = "INSERT INTO `tb_solicitud`(`NOMBREINGRESA`, `CORREOINGRESA`, `RUTAPDF`, `NOMBREARCHIVO`, `MOTIVO`) VALUES (?,?,?,?,?)";
         $stmt = $c->prepare($sql);
         $stmt->execute([$NOMBRECOMPLETO, $CORREO, $ruta, $archivo['userfile']['name'], $MOTIVO]);
-        echo'<script type="text/javascript">alert("Operación Exitosa"); 
-        window.location.href="../index.html";   </script>';
+        
+        header('Content-type: application/pdf');
+        header('Content-Disposition: inline; filename="' . $archivo['userfile']['name'] . '"');
+        header('Content-Transfer-Encoding: binary');
+        header('Accept-Ranges: bytes');
+        echo file_get_contents($ruta);
     } catch (\Throwable $th) {
         echo'<script type="text/javascript">alert("Falló la transferencia"); 
         window.location.href="../index.html";   </script>';

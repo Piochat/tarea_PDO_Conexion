@@ -22,7 +22,6 @@
 session_start();
 
 if (!isset($_SESSION['USUARIO_LOGUEADO'])){
-
     echo'<script type="text/javascript">  alert("usted no está logueado"); window.location.href="../index.html";   </script>';
 }
 $USUARIO = $_SESSION['LOGIN'];

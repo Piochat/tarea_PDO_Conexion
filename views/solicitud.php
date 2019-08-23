@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="public/css/main.css">
+    <link rel="stylesheet" href="../public/css/main.css">
     <!-- Compressed CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.5.3/dist/css/foundation.min.css"
         integrity="sha256-xpOKVlYXzQ3P03j397+jWFZLMBXLES3IiryeClgU5og= sha384-gP4DhqyoT9b1vaikoHi9XQ8If7UNLO73JFOOlQV1RATrA7D0O7TjJZifac6NwPps sha512-AKwIib1E+xDeXe0tCgbc9uSvPwVYl6Awj7xl0FoaPFostZHOuDQ1abnDNCYtxL/HWEnVOMrFyf91TDgLPi9pNg=="
@@ -30,6 +30,9 @@ $NOMBRE = $_SESSION['NOMBRE'];
 ?>
 
 <body>
+<?php
+    echo"<pre>".print_r($_FILES,true)."</pre>";
+?>
 <div class="contact1">
     <div class="grid-container">
         <div class="head">
@@ -43,7 +46,7 @@ $NOMBRE = $_SESSION['NOMBRE'];
 				</span>
 
         <!-- contact1-form   -->
-        <form class="form-horizontal validate-form" action="../control/registra.php" method="post">
+        <form method="post" action="../control/registra.php" enctype="multipart/form-data">
 				<span class="contact1-form-title">
 					Datos de la solicitud
 				</span>
@@ -77,7 +80,7 @@ $NOMBRE = $_SESSION['NOMBRE'];
             </div>
 
             <input type="hidden" name="MAX_FILE_SIZE" value="9000000" />
-            <h5 class="bg-white">Seleccione el archivo que da vida a la solicitud, (formato PDF).</h5> <input name="userfile" type="file"  class="form-control "  required/>
+            <h5 class="bg-white">Seleccione el archivo que da vida a la solicitud, (formato PDF).</h5> <input name="userfile" type="file"  class="form-control " accept="application/pdf" required/>
 
             <div class="row">
                 <div class="col-xs-12 col-sm-6 col-md-8"><input type="submit" value="Enviar Archivo" class="button extend"/></div>

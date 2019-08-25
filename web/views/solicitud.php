@@ -26,6 +26,7 @@ if (!isset($_SESSION['USUARIO_LOGUEADO'])){
 }
 $USUARIO = $_SESSION['LOGIN'];
 $NOMBRE = $_SESSION['NOMBRE'];
+$_SESSION['USUARIO_LOGUEADO'] = true;
 ?>
 
 <body>

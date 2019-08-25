@@ -1,7 +1,7 @@
 <?php
 session_start();
-require_once("../config/conexion.php");
-require_once("../test.php");
+require_once("config/conexion.php");
+require_once("test.php");
 
 // if (!isset($_SESSION['USUARIO_LOGUEADO'])){
 //     echo'<script type="text/javascript">  alert("usted no está logueado"); window.location.href="../index.html";   </script>';

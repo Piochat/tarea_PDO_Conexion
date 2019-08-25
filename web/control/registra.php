@@ -3,9 +3,9 @@ session_start();
 require_once("../config/conexion.php");
 require_once("../test.php");
 
-if (!isset($_SESSION['USUARIO_LOGUEADO'])){
-    echo'<script type="text/javascript">  alert("usted no está logueado"); window.location.href="../index.html";   </script>';
-}
+// if (!isset($_SESSION['USUARIO_LOGUEADO'])){
+//     echo'<script type="text/javascript">  alert("usted no está logueado"); window.location.href="../index.html";   </script>';
+// }
 
 $CORREO=strtoupper($_POST ['LOGIN']);
 $NOMBRECOMPLETO =strtoupper($_POST ['NOMBRECOMPLETO']);
@@ -19,11 +19,7 @@ if (!empty($archivo)) {
         subirArchivo($archivo['userfile']['tmp_name'].$archivo['userfile']['name']);
 
         $ruta = "https://storage.cloud.google.com/misegemnto64/";
-        if (!is_dir($ruta)) {
-            mkdir($ruta);
-        }
         $ruta = $ruta . $archivo['userfile']['name'];
-        move_uploaded_file($archivo['userfile']['tmp_name'], $ruta);
 
         $conectar = new Conexion();
         $c = $conectar->openConn();
@@ -39,10 +35,10 @@ if (!empty($archivo)) {
         echo file_get_contents($ruta);
     } catch (\Throwable $th) {
         echo'<script type="text/javascript">alert("Falló la transferencia"); 
-        window.location.href="../index.html";   </script>';
+          </script>';
     }
 } else {
-    echo'<script type="text/javascript">alert("Falló la transferencia"); 
+    echo'<script type="text/javascript">alert("Fallo por culpa del archivo"); 
     window.location.href="../index.html";   </script>';
 }
 

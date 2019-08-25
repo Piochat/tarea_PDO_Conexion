@@ -1,0 +1,18 @@
+# Use the PHP 7.3 runtime (BETA) by replacing "php72" below with "php73"
+runtime: php
+env: flex
+
+runtime_config:
+  document_root: web
+# Defaults to "serve index.php" and "serve public/index.php". Can be used to
+# serve a custom PHP front controller (e.g. "serve backend/index.php") or to
+# run a long-running PHP script as a worker process (e.g. "php worker.php").
+#
+# entrypoint: serve index.php
+env_variables:
+  CLOUDSQL_DSN: mysql:unix_socket=/cloudsql/tarea-pdo-conexion:us-central1:instanciauno;dbname=dbpaginasweb
+  CLOUDSQL_USER: root
+  CLOUDSQL_PASSWORD: ""
+  
+beta_settings:
+    cloud_sql_instances: "tarea-pdo-conexion:us-central1:instanciauno"

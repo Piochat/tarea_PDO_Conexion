@@ -46,7 +46,7 @@ $_SESSION['USUARIO_LOGUEADO'] = true;
 				</span>
 
         <!-- contact1-form   -->
-        <form method="post" action="../control/registra.php" enctype="multipart/form-data">
+        <form method="post" action="../registra.php" enctype="multipart/form-data">
 				<span class="contact1-form-title">
 					Datos de la solicitud
 				</span>

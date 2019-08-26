@@ -3,7 +3,7 @@ require 'vendor/autoload.php';
 
 use Google\Cloud\Storage\StorageClient;
 
-function subirArchivo($archivo)
+function subirArchivo($temp, $name)
 {
     $storage = new StorageClient(
         ['keyFilePath' => 'credential.json']
@@ -17,12 +17,10 @@ function subirArchivo($archivo)
     
     // Using Predefined ACLs to manage object permissions, you may
     // upload a file and give read access to anyone with the URL.
-    $bucket->upload(
-        fopen($archivo, 'r'),
-        [
-            'predefinedAcl' => 'publicRead'
-        ]
-    );
+    $object = $bucket->upload($temp,  [
+        'name' => $name,
+        'predefinedAcl' => 'publicRead'
+    ]);
 }
 
 // // Download and store an object from the bucket locally.
